@@ -12,7 +12,7 @@ class TextScraper():
         while count <= file_count:
             source = f"{target_dir}/page{count}.html"
 
-            with open(source) as html_file:
+            with open(source, encoding="utf8") as html_file:
                 soup = BeautifulSoup(html_file, 'lxml')
 
             text = soup.find_all(text=True)
@@ -27,7 +27,8 @@ class TextScraper():
                 'head', 
                 'input',
                 'script',
-                'style'
+                'style',
+                'table'
             ]
 
             for t in text:
